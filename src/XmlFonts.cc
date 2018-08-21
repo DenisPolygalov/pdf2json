@@ -138,7 +138,7 @@ void XmlFont::clear(){
 */
 GBool XmlFont::isEqual(const XmlFont& x) const{
   return ((size==x.size) && (lineSize==x.lineSize) && (charspace==x.charspace) &&
-	  (pos==x.pos) && (bold==x.bold) && (oblique==x.oblique) && (italic==x.italic) &&
+	  (strcmp(FontName->getCString(), x.FontName->getCString()) == 0) && (bold==x.bold) && (oblique==x.oblique) && (italic==x.italic) &&
 	  (color.isEqual(x.getColor())));
 }
 
