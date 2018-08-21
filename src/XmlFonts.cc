@@ -12,25 +12,6 @@
     char *name;
   };
 
-const int font_num=13;
-
-static Fonts fonts[font_num+1]={  
-     {"Courier",               "Courier" },
-     {"Courier-Bold",           "Courier"},
-     {"Courier-BoldOblique",    "Courier"},
-     {"Courier-Oblique",        "Courier"},
-     {"Helvetica",              "Helvetica"},
-     {"Helvetica-Bold",         "Helvetica"},
-     {"Helvetica-BoldOblique",  "Helvetica"},
-     {"Helvetica-Oblique",      "Helvetica"},
-     {"Symbol",                 "Symbol"   },
-     {"Times-Bold",             "Times"    },
-     {"Times-BoldItalic",       "Times"    },
-     {"Times-Italic",           "Times"    },
-     {"Times-Roman",            "Times"    },
-     {" "          ,            "Times"    },
-};
-
 #define xoutRound(x) ((int)(x + 0.5))
 extern GBool xml;
 
@@ -106,15 +87,9 @@ XmlFont::XmlFont(GString* ftname,int _size, double _charspace, GfxRGB rgb){
     if (strstr(fontname->lowerCase()->getCString(),"oblique")) oblique=gTrue;
     /*||strstr(fontname->lowerCase()->getCString(),"oblique"))  italic=gTrue;*/ 
     
-    int i=0;
-    while (strcmp(ftname->getCString(),fonts[i].Fontname)&&(i<font_num)) 
-	{
-		i++;
-	}
-    pos=i;
     delete fontname;
   }  
-  if (!DefaultFont) DefaultFont=new GString(fonts[font_num].name);
+  if (!DefaultFont) DefaultFont=new GString("Times");
 
 }
  
@@ -177,9 +152,9 @@ GBool XmlFont::isEqualIgnoreBold(const XmlFont& x) const{
 }
 
 GString* XmlFont::getFontName(){
-   if (pos!=font_num) return new GString(fonts[pos].name);
-    else return new GString(DefaultFont);
-//    return new GString(FontName);
+  // if (pos!=font_num) return new GString(fonts[pos].name);
+  //  else return new GString(DefaultFont);
+    return new GString(FontName);
 }
 
 GString* XmlFont::getFullName(){
