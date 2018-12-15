@@ -931,7 +931,7 @@ void ImgOutputDev::startPage(int pageNum, GfxState *state,double crop_x1, double
 
 GBool ImgOutputDev::hasValidSplitFileName() {
     for( int i = 0, j = 0; i < Docname->getLength(); i++, j++ ){
-        if(Docname->getChar(i) == '\%'){
+        if(Docname->getChar(i) == '%'){
             return gTrue;
         }
     }
@@ -947,7 +947,7 @@ void ImgOutputDev::setSplitFileName(int pageNum, GBool closeprev) {
     for( int i = 0, j = 0; i < Docname->getLength(); i++, j++ ){
         const char *replace = NULL;
         switch ( Docname->getChar(i) ){
-            case '\%': 
+            case '%':
                 sprintf(ptext,"%d",pageNum);
                 pn = ptext;
                 
@@ -1389,6 +1389,7 @@ GBool ImgOutputDev::dumpDocOutline(Catalog* catalog)
 
 	if (!ok || xml)
     	return gFalse;
+    return gTrue;
 }
 
 void ImgOutputDev::updateCharSpace(GfxState *state)
