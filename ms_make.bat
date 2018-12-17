@@ -11,7 +11,7 @@ set FTLIBS=-lfreetype
 
 
 copy aconf-win32.h aconf.h
-
+if not exist .\bin mkdir bin
 
 
 cd goo
@@ -194,6 +194,6 @@ cd ..\src
 
 %CXX% %FPFLAGS% /nologo /Fepdf2json.exe XmlFonts.obj XmlLinks.obj ImgOutPutDev.obj pdf2json.obj ..\goo\libGoo.lib ..\xpdf\libxpdf.lib ..\fofi\libfofi.lib ..\splash\libsplash.lib advapi32.lib Gdi32.lib User32.lib ..\freetype.win32\lib\freetype_a.lib
 
-
+move pdf2json.exe ..\bin\
 
 cd ..
